@@ -9,3 +9,16 @@
 <!doctype html>
 
 <%@include file="base.jsp" %>
+
+
+
+<form action="main">
+    
+    <input type="submit" name="submit" />
+    
+    
+    
+    
+    
+    
+</form>
