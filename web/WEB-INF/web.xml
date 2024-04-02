@@ -4,9 +4,17 @@
         <servlet-name>main</servlet-name>
         <servlet-class>Servelets.main</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>database1</servlet-name>
+        <servlet-class>Servelets.database1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>database1</servlet-name>
+        <url-pattern>/database1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
