@@ -15,7 +15,7 @@
 <form action="main">
     
     <input type="submit" name="submit" />
-    
+    <p>Bamitha</p>
     
     
     
