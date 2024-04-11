@@ -198,7 +198,7 @@ public class database {
         }
         
         
-        return 
+        return products;
     }
             
             

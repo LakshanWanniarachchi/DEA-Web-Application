@@ -1,3 +1,20 @@
+
+
+<%@page import="java.util.*"%>
+<%@page import="Servelets.ProductData"%>
+<%@page import="Servelets.database"%>
+<% 
+
+ database db = new database();
+ 
+  List<ProductData> products = db.get_all_product();
+
+
+
+
+%>
+
+
 <%@include file="base.jsp" %>
 
     <!-- Hero/Intro Slider Start -->
@@ -199,6 +216,14 @@
                         <!-- 1st tab start -->
                         <div class="tab-pane fade show active" id="tab-product-all">
                             <div class="row">
+                                
+                                <% for (ProductData product : products ) { %>
+                                
+                                
+                                
+                                
+                                
+                                
                                 <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
                                     data-aos-delay="200">
                                     <!-- Single Prodect -->
@@ -231,16 +256,16 @@
                                                 </span>
                                                 <span class="rating-num">( 5 Review )</span>
                                             </span>
-                                            <h5 class="title"><a href="single-product.html">Women's Elizabeth Coat
+                                            <h5 class="title"><a href="single-product.html"><%=product.getP_Name() %>
                                                 </a>
                                             </h5>
                                             <span class="price">
-                                                <span class="new">$38.50</span>
+                                                <span class="new">$<%=product.getP_Price() %></span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-                                  
+                                 <% } %>
                             </div>
                         </div>
                         <!-- 1st tab end -->
