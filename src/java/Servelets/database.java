@@ -6,6 +6,7 @@
 package Servelets;
 
 import java.sql.*;
+import java.util.*;
 
 
 /**
@@ -151,6 +152,56 @@ public class database {
 
         }
     }
+            
+        
+            
+            
+      public List<ProductData> get_all_product () {
+           
+        List<ProductData> products = new ArrayList<>();
+
+        try {
+
+      
+
+            
+
+            String sql = "Select * from product ";
+            
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            
+
+            ResultSet p_data = pstmt.executeQuery();
+            
+            
+            while( p_data.next()) {
+            
+            ProductData row = new ProductData();
+            row.setPID(p_data.getInt("PID"));
+            row.setP_Name(p_data.getString("P_Name"));
+            row.setP_Quantity(p_data.getInt("P_Quantity"));
+            row.setP_description(p_data.getString("P_description"));
+            row.setP_Price(p_data.getInt("P_Price"));
+            
+            products.add(row);
+            }
+            
+
+            pstmt.close();
+
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        }
+        
+        
+        return 
+    }
+            
+            
        
        
        
