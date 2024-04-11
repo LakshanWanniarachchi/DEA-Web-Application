@@ -8,6 +8,10 @@
         <servlet-name>database1</servlet-name>
         <servlet-class>Servelets.database1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>Servelets.cart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>database1</servlet-name>
         <url-pattern>/database1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
