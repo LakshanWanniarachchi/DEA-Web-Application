@@ -248,6 +248,10 @@
                                             </div>
                                             <button title="Add To Cart" class=" add-to-cart">Add
                                                 To Cart</button>
+                                            
+                                            <a href="add-to-cart?id=<%=product.getPID()%>" title="Add To Cart" class=" add-to-cart">Add
+                                                To Cart
+                                                </a>
                                         </div>
                                         <div class="content">
                                             <span class="ratings">
