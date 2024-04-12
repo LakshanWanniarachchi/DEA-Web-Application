@@ -200,12 +200,35 @@ public class database {
         
         return products;
     }
-            
-            
-       
-       
-       
-       
+      
+      
+      
+      
+    public List<CartData> get_Product_data_by_id(int ID) {
+    
+        List<CartData> p_data = new ArrayList<>();
+    
+    try {
+        String sql = "SELECT * FROM product WHERE PID = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, ID);
+        ResultSet product = pstmt.executeQuery();
+        
+        while (product.next()) {
+            CartData Product_data = new CartData();
+            Product_data.setPID(product.getInt("PID"));
+            Product_data.setP_Name(product.getString("P_Name"));
+            Product_data.setP_Price(product.getInt("P_Price"));
+            Product_data.setP_description(product.getString("P_description"));
+            p_data.add(Product_data);
+        }
+    } catch(Exception e) {
+        System.out.println(e);
+    }
+    
+    return p_data;
+}
+      
        
 }
     

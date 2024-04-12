@@ -4,7 +4,24 @@
     Author     : laksh
 --%>
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.*"%>
+<%@page import="Servelets.CartData"%>
+<%
+    
+   
+   
+    List<CartData> bla = (List<CartData>)  session.getAttribute("cart-list");
+
+    
+
+%>
+
+
+
 <!DOCTYPE html>
 <html >
 
@@ -155,33 +172,19 @@
             </div>
             <div class="body customScroll">
                 <ul class="minicart-product-list">
+                    
+                    <% for (CartData p : bla ) { %>
                     <li>
                         <a href="single-product.html" class="image"><img src="assets/images/product-image/1.jpg"
                                 alt="Cart product Image"></a>
                         <div class="content">
-                            <a href="single-product.html" class="title">Women's Elizabeth Coat</a>
-                            <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
+                            <a href="single-product.html" class="title"><%= p.getP_Name() %></a>
+                            <span class="quantity-price">1 x <span class="amount"><%= p.getP_Price() %></span></span>
                             <a href="#" class="remove">Ã</a>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-product.html" class="image"><img src="assets/images/product-image/2.jpg"
-                                alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="single-product.html" class="title">Long sleeve knee length</a>
-                            <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
-                            <a href="#" class="remove">Ã</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-product.html" class="image"><img src="assets/images/product-image/3.jpg"
-                                alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="single-product.html" class="title">Cool Man Wearing Leather</a>
-                            <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
-                            <a href="#" class="remove">Ã</a>
-                        </div>
-                    </li>
+                   
+                 <%  } %>
                 </ul>
             </div>
             <div class="foot">
