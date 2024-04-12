@@ -50,9 +50,9 @@ public class database {
     
     
     
-       public void create_User(String Name ,String Email , String Password ) {
+       public int create_User(String Name ,String Email , String Password ) {
            
-        
+        int rowsAffected=0;
 
         try {
 
@@ -68,17 +68,21 @@ public class database {
             pstmt.setString(2, Email);
             pstmt.setString(3, Password);
             
-            int rowsAffected = pstmt.executeUpdate();
+            rowsAffected = pstmt.executeUpdate();
 
-            System.out.println("Rows affected: " + rowsAffected);
+            
 
             conn.close();
+            
+          
 
         } catch (Exception e) {
 
             System.out.println(e.getMessage());
 
         }
+        
+          return rowsAffected;
     }
        
        
