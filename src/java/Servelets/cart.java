@@ -69,8 +69,25 @@ public class cart extends HttpServlet {
          
          int id = Integer.parseInt(request.getParameter("id")) ;
          
-         CartData product = new CartData();
-         product.setPID(id);
+         database db = new database();
+         
+         
+         List<CartData> p_data = db.get_Product_data_by_id(id);
+         
+         CartData cart = new CartData();
+         
+         for (CartData p : p_data ){
+         
+         cart.setPID(p.getPID());
+         cart.setP_Name(p.getP_Name());
+         cart.setP_description(p.getP_description());
+         cart.setP_Price(p.getP_Price());
+         cart.setP_Quantity(p.getP_Quantity());
+         
+        
+         }
+         
+         
          
          HttpSession session = request.getSession();
 
@@ -80,7 +97,7 @@ public class cart extends HttpServlet {
         //check session already created and set cartList 
         if (cart_list==null) {
         
-        CartList.add(product);
+        CartList.add(cart);
         
         session.setAttribute("cart-list", CartList);
         out.println("session create and product list add!");
@@ -99,7 +116,7 @@ public class cart extends HttpServlet {
               if (car_product.getPID()==id) {
               
               exist = true;
-              out.println("Product All read exist !");
+              out.println("Product All read exist !"+car_product.getP_Name());
               break;
               
               
@@ -111,9 +128,9 @@ public class cart extends HttpServlet {
             if (!exist) {
             
             
-            CartList.add(product);
+            CartList.add(cart);
             session.setAttribute("cart-list", CartList);
-            out.println("product add"+id);
+            out.println("product add"+cart.getP_Name());
             }
           
         
