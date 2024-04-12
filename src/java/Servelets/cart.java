@@ -65,7 +65,7 @@ public class cart extends HttpServlet {
          
          try(PrintWriter out = response.getWriter()) {
   
-         List<CartData> CartList = new ArrayList<>();
+        
          
          int id = Integer.parseInt(request.getParameter("id")) ;
          
@@ -73,19 +73,11 @@ public class cart extends HttpServlet {
          
          
          List<CartData> p_data = db.get_Product_data_by_id(id);
-         
-         CartData cart = new CartData();
-         
-         for (CartData p : p_data ){
-         
-         cart.setPID(p.getPID());
-         cart.setP_Name(p.getP_Name());
-         cart.setP_description(p.getP_description());
-         cart.setP_Price(p.getP_Price());
-         cart.setP_Quantity(p.getP_Quantity());
+         CartData productToAdd = p_data.get(0);
          
         
-         }
+         
+       
          
          
          
@@ -96,10 +88,12 @@ public class cart extends HttpServlet {
         
         //check session already created and set cartList 
         if (cart_list==null) {
+            
+        cart_list = new ArrayList<>();
         
-        CartList.add(cart);
+        cart_list.add(productToAdd);
         
-        session.setAttribute("cart-list", CartList);
+        session.setAttribute("cart-list", cart_list);
         out.println("session create and product list add!");
         response.sendRedirect("index.jsp");
         } 
@@ -108,10 +102,10 @@ public class cart extends HttpServlet {
         
         else {
             
-            CartList = cart_list;
+            
             boolean exist =false;
             
-            for (CartData  car_product : CartList ) {
+            for (CartData  car_product : cart_list ) {
             
               if (car_product.getPID()==id) {
               
@@ -129,10 +123,10 @@ public class cart extends HttpServlet {
             if (!exist) {
             
             
-            CartList.add(cart);
-            session.setAttribute("cart-list", CartList);
-            out.println("product add"+cart.getP_Name());
-             response.sendRedirect("index.jsp");
+            cart_list.add(productToAdd);
+            session.setAttribute("cart-list", cart_list);
+            out.println("product add"+productToAdd.getP_Name());
+            response.sendRedirect("index.jsp");
             }
           
         
