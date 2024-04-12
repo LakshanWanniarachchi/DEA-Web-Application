@@ -101,7 +101,7 @@ public class cart extends HttpServlet {
         
         session.setAttribute("cart-list", CartList);
         out.println("session create and product list add!");
-        
+        response.sendRedirect("index.jsp");
         } 
         
         //if cart list allread exist, check product all ready exist in cart list
@@ -117,6 +117,7 @@ public class cart extends HttpServlet {
               
               exist = true;
               out.println("Product All read exist !"+car_product.getP_Name());
+              response.sendRedirect("index.jsp");
               break;
               
               
@@ -131,6 +132,7 @@ public class cart extends HttpServlet {
             CartList.add(cart);
             session.setAttribute("cart-list", CartList);
             out.println("product add"+cart.getP_Name());
+             response.sendRedirect("index.jsp");
             }
           
         

@@ -173,7 +173,15 @@
             <div class="body customScroll">
                 <ul class="minicart-product-list">
                     
-                    <% for (CartData p : bla ) { %>
+                    <%
+                        
+                        
+                        if(bla != null) {
+                        
+                        
+                        
+                        
+                        for (CartData p : bla ) { %>
                     <li>
                         <a href="single-product.html" class="image"><img src="assets/images/product-image/1.jpg"
                                 alt="Cart product Image"></a>
@@ -184,7 +192,7 @@
                         </div>
                     </li>
                    
-                 <%  } %>
+                 <%  }} %>
                 </ul>
             </div>
             <div class="foot">
