@@ -17,6 +17,8 @@
     List<CartData> bla = (List<CartData>)  session.getAttribute("cart-list");
 
     String User = (String) session.getAttribute("user_name");
+    
+   int Product_count = 0;
 
 %>
 
@@ -48,6 +50,9 @@
     <link rel="stylesheet" href="assets/css/plugins/nice-select.css" />
     <link rel="stylesheet" href="assets/css/plugins/venobox.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    
+
 
 </head>
 
@@ -88,7 +93,7 @@
                         <div class="header-actions">
                             
                             <% if(User==null) {%>
-                            <a href="login.html" class="header-action-btn login-btn" data-bs-toggle="modal"
+                            <a href="login.jsp" class="header-action-btn login-btn" data-bs-toggle="modal"
                                 data-bs-target="#loginActive">Sign In</a> <% } %>
                             <!-- Single Wedge Start -->
                             <a href="#" class="header-action-btn" data-bs-toggle="modal" data-bs-target="#searchActive">
@@ -103,7 +108,19 @@
                             <a href="#offcanvas-cart"
                                 class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="pe-7s-shopbag"></i>
-                                <span class="header-action-num">01</span>
+                                
+                                <%
+                                    
+                                    
+                                    if(bla != null) {
+                        
+                                    
+                                    for (CartData p : bla ) { Product_count+=1; }}%>
+                                
+                                
+                                
+                                
+                                    <span class="header-action-num"><%=Product_count%></span>
                                 <!-- <span class="cart-amount">â¬30.00</span> -->
                             </a>
                             <a href="#offcanvas-mobile-menu"
