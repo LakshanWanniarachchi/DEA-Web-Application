@@ -76,7 +76,7 @@ public class cart extends HttpServlet {
          CartData productToAdd = p_data.get(0);
          
         
-         
+        
        
          
          
@@ -92,6 +92,8 @@ public class cart extends HttpServlet {
         cart_list = new ArrayList<>();
         
         cart_list.add(productToAdd);
+        
+        
         
         session.setAttribute("cart-list", cart_list);
         out.println("session create and product list add!");

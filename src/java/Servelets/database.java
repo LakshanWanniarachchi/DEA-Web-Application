@@ -232,6 +232,38 @@ public class database {
     
     return p_data;
 }
+    
+    
+    
+    
+    public String get_user_by_email (String email , String password) {
+    
+    String d_email ="";
+    
+    try {
+    
+        
+        
+    String sql = "Select * from user where Email=? AND Password=? ";
+    
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+    
+    pstmt.setString(1, email);
+    pstmt.setString(2, password);
+    
+    ResultSet user_data = pstmt.executeQuery();
+    
+    d_email = user_data.getString("Email");
+    
+    
+    } catch(Exception e) {    System.out.println(e);}
+    
+
+    
+    
+    return d_email;
+    
+    }
       
        
 }
