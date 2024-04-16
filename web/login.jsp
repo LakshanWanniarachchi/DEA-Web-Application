@@ -58,7 +58,7 @@
                             <div id="lg1" class="tab-pane ">
                                 <div class="login-form-container">
                                     <div class="login-register-form">
-                                        <form action="login" method="post">
+                                        <form action="login" method="POST">
                                             <input type="text" name="email" placeholder="email" />
                                             <input type="password" name="password" placeholder="Password" />
                                             <div class="button-box">

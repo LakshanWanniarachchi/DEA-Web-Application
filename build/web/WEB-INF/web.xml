@@ -28,6 +28,10 @@
         <servlet-name>cartqytupdate</servlet-name>
         <servlet-class>Servelets.cartqytupdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cartproductremove</servlet-name>
+        <servlet-class>Servelets.cartproductremove</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>cartqytupdate</servlet-name>
         <url-pattern>/cartqytupdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cartproductremove</servlet-name>
+        <url-pattern>/cart-product-remove</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

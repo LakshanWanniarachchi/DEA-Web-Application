@@ -7,7 +7,7 @@ package Servelets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author laksh
  */
-public class login extends HttpServlet {
+public class cartproductremove extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet login</title>");            
+            out.println("<title>Servlet cartproductremove</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet cartproductremove at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +58,52 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
+        
+        
+          try (PrintWriter out = response.getWriter()) {
+             
+             
+            int PID  = Integer.parseInt (request.getParameter("PID"));
+           
+         
+   
+             
+             HttpSession session = request.getSession();
+             List<CartData> cartList = (List<CartData>) session.getAttribute("cart-list");
+             
+             
+             for (CartData product : cartList) {
+              if (PID == product.getPID()) {
+                  
+                  cartList.remove(product);
+                  break;
+               } 
+            }
+            
+             
+             
+             
+             session.setAttribute("cart-list", cartList);
+             
+             response.sendRedirect("cart.jsp");
+         
+         
+         
+         
+         }
+         
+         
+         
+         catch(Exception e) {
+         
+         System.out.println(e);
+         
+         
+         }
+        
+        
+        
     }
 
     /**
@@ -72,57 +117,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        try(PrintWriter out = response.getWriter()){
-            
-        
-        String email = request.getParameter("email");
-        String Password = request.getParameter("password");
-       
-        
-        database db = new database();
-            
-        String user_email = db.get_user_by_email(email, Password);
-        
-        
-        
-        if (email.equals(user_email)  ) {
-        
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("user_name", user_email);
-        response.sendRedirect("index.jsp");
-        
-        
-        } else {
-            
-            
-        
-        request.setAttribute("error", "Email or Password Incorrect!");
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-        dispatcher.forward(request, response);
-        response.sendRedirect("login.jsp");
-        
-        }
-        
-        } catch(Exception e){
-        
-        
-        
-        
-        
-        
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-      
+        processRequest(request, response);
     }
 
     /**

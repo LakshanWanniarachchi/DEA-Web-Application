@@ -38,7 +38,7 @@ public class database {
      
 
      
-       System.out.println(e.getMessage());
+     e.printStackTrace();
      
 
      }
@@ -78,7 +78,7 @@ public class database {
 
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+           e.printStackTrace();
 
         }
         
@@ -113,7 +113,7 @@ public class database {
 
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+            e.printStackTrace();
 
         }
     }
@@ -152,7 +152,7 @@ public class database {
 
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+            e.printStackTrace();
 
         }
     }
@@ -197,7 +197,7 @@ public class database {
 
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+           e.printStackTrace();
 
         }
         
@@ -226,8 +226,13 @@ public class database {
             Product_data.setP_description(product.getString("P_description"));
             p_data.add(Product_data);
         }
+        
+        
+            pstmt.close();
+
+            conn.close();
     } catch(Exception e) {
-        System.out.println(e);
+       e.printStackTrace();
     }
     
     return p_data;
@@ -236,34 +241,32 @@ public class database {
     
     
     
-    public String get_user_by_email (String email , String password) {
-    
-    String d_email ="";
-    
-    try {
-    
-        
-        
-    String sql = "Select * from user where Email=? AND Password=? ";
-    
-    PreparedStatement pstmt = conn.prepareStatement(sql);
-    
-    pstmt.setString(1, email);
-    pstmt.setString(2, password);
-    
-    ResultSet user_data = pstmt.executeQuery();
-    
-    d_email = user_data.getString("Email");
-    
-    
-    } catch(Exception e) {    System.out.println(e);}
-    
+ public String get_user_by_email(String email, String password) {
+    String d_email = "";
 
-    
+    try {
+        String sql = "SELECT * FROM user WHERE Email=? AND Password=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, email);
+        pstmt.setString(2, password);
+        ResultSet user_data = pstmt.executeQuery();
+        
+        // Check if there's any result
+        if (user_data.next()) {
+            d_email = user_data.getString("Email");
+           
+        }
+        
+        // Close ResultSet and PreparedStatement
+        user_data.close();
+        pstmt.close();
+    } catch (SQLException e) {
+        // Properly handle exceptions
+        e.printStackTrace();
+    }
     
     return d_email;
-    
-    }
+}
       
        
 }
