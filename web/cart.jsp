@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+
 <%@include file="base.jsp" %>
 
-
+<% int Total=0 ;%>
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -49,9 +49,16 @@
                         if(bla != null) {
                         
                         
+                       
                         
-                        
-                        for (CartData p : bla ) { %>
+                        for (CartData p : bla ) {
+                            
+                                     
+                                     
+                         Total += (p.getP_Price()*p.getQuentity());            
+                                     
+                                     
+                                     %>
                                     <tr>
                                         <td class="product-thumbnail">
                                             <a href="#"><img class="img-responsive ml-15px"
@@ -80,7 +87,7 @@
                                         <td class="product-subtotal">$70.00</td>
                                         <td class="product-remove">
                                             <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="fa fa-times"></i></a>
+                                            <a href="cart-product-remove?PID=<%= p.getPID() %>"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                
@@ -174,7 +181,7 @@
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                                 </div>
-                                <h5>Total products <span>$260.00</span></h5>
+                                <h5>Total products <span>$<%=Total%></span></h5>
                                 <div class="total-shipping">
                                     <h5>Total shipping</h5>
                                     <ul>
@@ -182,8 +189,10 @@
                                         <li><input type="checkbox" /> Express <span>$30.00</span></li>
                                     </ul>
                                 </div>
-                                <h4 class="grand-totall-title">Grand Total <span>$260.00</span></h4>
-                                <a href="checkout.html">Proceed to Checkout</a>
+                                
+                                
+                                <h4 class="grand-totall-title">Grand Total <span>$<%=Total%></span></h4>
+                                <a href="checkout.jsp">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
