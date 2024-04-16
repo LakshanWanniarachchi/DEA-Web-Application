@@ -7,7 +7,6 @@ package Servelets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author laksh
  */
-public class cart extends HttpServlet {
+public class cartqytupdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class cart extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet cart</title>");            
+            out.println("<title>Servlet cartqytupdate</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet cart at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet cartqytupdate at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,91 +58,56 @@ public class cart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-         response.setContentType("text/html;charset=UTF-8");
-         
-         
-         try(PrintWriter out = response.getWriter()) {
-  
-        
-         
-         int id = Integer.parseInt(request.getParameter("id")) ;
-         
-         database db = new database();
-         
-         
-         List<CartData> p_data = db.get_Product_data_by_id(id);
-         CartData productToAdd = p_data.get(0);
-         productToAdd.setQuentity(1);
         
         
-       
-         
-         
-         
-         HttpSession session = request.getSession();
-
-         List<CartData> cart_list = (List<CartData>) session.getAttribute("cart-list");
-         
         
-        //check session already created and set cartList 
-        if (cart_list==null) {
+         
+         
+         try (PrintWriter out = response.getWriter()) {
+             
+             
+            int PID  = Integer.parseInt (request.getParameter("PID"));
+            int qyt = Integer.parseInt(request.getParameter("quantity"));
+         
+            System.out.println(PID);
             
-        cart_list = new ArrayList<>();
-        
-        cart_list.add(productToAdd);
-        
-        
-        
-        session.setAttribute("cart-list", cart_list);
-        out.println("session create and product list add!");
-        response.sendRedirect("index.jsp");
-        } 
-        
-        //if cart list allread exist, check product all ready exist in cart list
-        
-        else {
-            
-            
-            boolean exist =false;
-            
-            for (CartData  car_product : cart_list ) {
-            
-              if (car_product.getPID()==id) {
-              
-              exist = true;
-              out.println("Product All read exist !"+car_product.getP_Name());
-              response.sendRedirect("index.jsp");
-              break;
-              
-              
-              }
-            
+             
+      
+             
+             
+             HttpSession session = request.getSession();
+             List<CartData> cartList = (List<CartData>) session.getAttribute("cart-list");
+             
+             
+             for (CartData product : cartList) {
+              if (PID == product.getPID()) {
+                  
+                  product.setQuentity(qyt);
+                  break;
+               } 
             }
             
-            //not exist product add to session list product
-            if (!exist) {
-            
-            
-            cart_list.add(productToAdd);
-            session.setAttribute("cart-list", cart_list);
-            out.println("product add"+productToAdd.getP_Name());
-            response.sendRedirect("index.jsp");
-            }
-          
-        
-        
-        
-        }
-        
-        
-        } catch(Exception e) 
-        
-        
-        
-        {System.out.println(e);}
-        
-        
+             
+             
+             
+             session.setAttribute("cart-list", cartList);
+             
+             response.sendRedirect("cart.jsp");
+         
+         
+         
+         
+         }
+         
+         
+         
+         catch(Exception e) {
+         
+         System.out.println(e);
+         
+         
+         }
+      
     }
 
     /**
@@ -157,7 +121,9 @@ public class cart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+         
+        
     }
 
     /**
