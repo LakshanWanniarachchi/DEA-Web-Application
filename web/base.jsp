@@ -76,7 +76,7 @@
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
                             <ul>
-                                <li class="dropdown"><a href="#">Home</a>
+                                <li class="dropdown"><a href="index.jsp">Home</a>
                                    
                                 </li>
                                 <li class="dropdown position-static"><a href="#">Shop </a>
@@ -123,7 +123,7 @@
                                     <span class="header-action-num"><%=Product_count%></span>
                                 <!-- <span class="cart-amount">â¬30.00</span> -->
                             </a>
-                            <a href="#offcanvas-mobile-menu"
+                            <a href="cart.jsp"
                                 class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                 <i class="pe-7s-menu"></i>
                             </a>
@@ -216,7 +216,7 @@
             </div>
             <div class="foot">
                 <div class="buttons mt-30px">
-                    <a href="cart.html" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                    <a href="cart.jsp" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
                     <a href="checkout.html" class="btn btn-outline-dark current-btn">checkout</a>
                 </div>
             </div>

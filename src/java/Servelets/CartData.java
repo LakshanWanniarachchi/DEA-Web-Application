@@ -24,6 +24,8 @@ public class CartData extends ProductData {
         this.quentity = quentity;
     }
 
+   
+
     public void setQuentity(int quentity) {
         this.quentity = quentity;
     }

@@ -27,7 +27,7 @@
             <h3 class="cart-page-title">Your cart items</h3>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <form action="#">
+                    
                         <div class="table-content table-responsive cart-table-content">
                             <table>
                                 <thead>
@@ -60,14 +60,22 @@
                                         <td class="product-name"><a href="#"><%= p.getP_Name() %></a></td>
                                         <td class="product-price-cart"><span class="amount">$<%= p.getP_Price() %></span></td>
                                         <td class="product-quantity">
-                                            <div>
+                                           
                                                 
-                                                
-                                                 <label for="quantity">Quantity:</label>
-    <input class="cart-plus-minus-box" type="number" id="quantity" name="quantity" value="1" min="1">
-    
    
-                                            </div>
+
+     
+                            <dive>   <form action="cartqytupdate" method="GET" >
+                                    <input type="hidden" name="PID" value="<%= p.getPID() %>" />
+                                    <input type="number" name="quantity" id="quantity" value="<%= p.getQuentity() %>" min="1" required>
+    <input type="submit" name="submit"  >
+   </form></dive>
+
+
+
+         
+   
+                                      
                                         </td>
                                         <td class="product-subtotal">$70.00</td>
                                         <td class="product-remove">
@@ -82,24 +90,7 @@
                         </div>
                                 
                                 
-                                <script>
-                                    
-                               Const QTY =   document.getElementById("QTY");
-                                    
-                                QTY.addEventListener("change" , ()={
-                                    
-                                    
-                                    console.log(QTY.valueOf();)
-                                    
-                                    
-                                }); 
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                </script>      
+                              
                                 
                                 
                                 
@@ -119,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+            
                     <div class="row">
                         <div class="col-lg-4 col-md-6 mb-lm-30px">
                             <div class="cart-tax">
@@ -387,6 +378,8 @@
             </div>
         </div>
     </div>
+    
+   
     <!-- Login Modal End -->
 
     <!-- Vendor JS -->
