@@ -11,7 +11,7 @@
 
 <%@include file="base.jsp" %>
 
-
+<% int Total=0 ;%>
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -219,10 +219,31 @@
                                 </div>
                                 <div class="your-order-middle">
                                     <ul>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
+                                        
+                                        <%
+                        
+                        
+                        if(bla != null) {
+                        
+                        
+                       
+                        
+                        for (CartData p : bla ) { 
+                                        
+                                        
+                         Total += (p.getP_Price()*p.getQuentity());              
+                                        
+                                        %>
+                                        
+                                        
+                        <li><span class="order-middle-left"><%= p.getP_Name() %> X <%= p.getQuentity() %></span>
+                            
+                            <%  int p_total = p.getP_Price()*p.getQuentity(); %>
+                            
+                            
+                            <span
+                                class="order-price">$<%=p_total%> </span></li>
+                                                     <%  }}%>
                                     </ul>
                                 </div>
                                 <div class="your-order-bottom">
@@ -234,7 +255,7 @@
                                 <div class="your-order-total">
                                     <ul>
                                         <li class="order-total">Total</li>
-                                        <li>$100</li>
+                                        <li>$<%=Total%></li>
                                     </ul>
                                 </div>
                             </div>
