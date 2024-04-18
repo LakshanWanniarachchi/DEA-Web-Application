@@ -15,11 +15,11 @@ import java.util.*;
  */
 public class database {
     
-      private final String url = "jdbc:mysql://localhost:3306/web_store";
-      private final String Username = "root";
-      private final String password = "";
+      private final String url = "jdbc:mysql://srv1153.hstgr.io/u552993317_web_store";
+      private final String Username = "u552993317_root";
+      private final String password = "HrV[P9hT?";
       
-      private Connection conn;
+      private Connection conn= null;
     
     public database() {
 
@@ -31,7 +31,7 @@ public class database {
 
             conn = DriverManager.getConnection(this.url,this.Username, this.password);
           
-          
+         
           
           
      } catch (Exception e) {
@@ -39,6 +39,13 @@ public class database {
 
      
      e.printStackTrace();
+     
+      if (conn != null) {
+                System.out.println("Connection successful!");
+                // Perform further operations with the connection
+            } else {
+                System.out.println("Failed to make connection!");
+            }
      
 
      }
@@ -58,7 +65,7 @@ public class database {
 
       
 
-            Statement stmt = conn.createStatement();
+           
 
             String sql = "INSERT INTO user (UserName, Email, Password) VALUES (?, ?, ?)";
             
@@ -94,7 +101,7 @@ public class database {
 
       
 
-            Statement stmt = conn.createStatement();
+           
 
             String sql = "INSERT INTO admin (Name, Password, Email) VALUES (?, ?, ?)";
             
@@ -130,7 +137,7 @@ public class database {
 
       
 
-            Statement stmt = conn.createStatement();
+           
 
             String sql = "INSERT INTO product (P_Name, P_Quantity, P_description , P_Price , A_ID) VALUES (?, ?, ?, ?, ?)";
             
