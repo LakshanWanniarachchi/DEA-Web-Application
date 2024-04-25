@@ -32,6 +32,10 @@
         <servlet-name>cartproductremove</servlet-name>
         <servlet-class>Servelets.cartproductremove</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PlaceOrder</servlet-name>
+        <servlet-class>Servelets.PlaceOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>cartproductremove</servlet-name>
         <url-pattern>/cart-product-remove</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlaceOrder</servlet-name>
+        <url-pattern>/order-place</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
