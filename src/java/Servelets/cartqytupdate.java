@@ -92,7 +92,7 @@ public class cartqytupdate extends HttpServlet {
              
              session.setAttribute("cart-list", cartList);
              
-             response.sendRedirect("cart.jsp");
+             response.sendRedirect("CartPage.jsp");
          
          
          
