@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>I am sripathi</title>
+        <title>Lakshan</title>
     </head>
     <body>
         <h1>Hdsdsdsdsdsdsdsd</h1>
