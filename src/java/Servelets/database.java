@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Servelets;
 
 import java.sql.*;
 import java.util.*;
 
 
-/**
- *
- * @author lakshitha
- */
+
 public class database {
     
       private final String url = "jdbc:mysql://localhost:3306/web_store";
@@ -52,7 +45,7 @@ public class database {
     
        public int create_User(String Name ,String Email , String Password ) {
            
-        int rowsAffected=0;
+        int UID=0;
 
         try {
 
@@ -68,7 +61,15 @@ public class database {
             pstmt.setString(2, Email);
             pstmt.setString(3, Password);
             
-            rowsAffected = pstmt.executeUpdate();
+            ResultSet rs = pstmt.executeQuery();
+            
+            
+            while( rs.next()) {
+            
+               UID =rs.getInt("UserId");
+               break;
+           
+            }
 
             
 
@@ -82,7 +83,7 @@ public class database {
 
         }
         
-          return rowsAffected;
+          return UID;
     }
        
        

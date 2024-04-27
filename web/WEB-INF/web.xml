@@ -36,6 +36,10 @@
         <servlet-name>PlaceOrder</servlet-name>
         <servlet-class>Servelets.PlaceOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addProduct</servlet-name>
+        <servlet-class>Servelets.addProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>PlaceOrder</servlet-name>
         <url-pattern>/order-place</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addProduct</servlet-name>
+        <url-pattern>/addProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

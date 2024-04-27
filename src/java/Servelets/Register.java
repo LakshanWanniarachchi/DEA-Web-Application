@@ -98,7 +98,7 @@ public class Register extends HttpServlet {
              
               HttpSession session = request.getSession();
               
-              session.setAttribute("user_name", uname);
+              session.setAttribute("User_id", uname);
               response.sendRedirect("index.jsp");
               response.setStatus(HttpServletResponse.SC_OK); 
              
