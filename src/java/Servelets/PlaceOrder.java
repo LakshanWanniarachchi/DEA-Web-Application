@@ -70,7 +70,29 @@ public class PlaceOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+        
+        
+        String name = request.getParameter("name");
+        String home_address = request.getParameter("address");
+        String city = request.getParameter("city");
+       
+        String zip = request.getParameter("zip");
+        String mobile = request.getParameter("mobile");
+        String email = request.getParameter("email");
+        
+        
+        String address = name+","+home_address+","+city+","+zip;
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
