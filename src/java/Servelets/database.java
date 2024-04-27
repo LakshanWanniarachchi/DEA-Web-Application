@@ -45,9 +45,9 @@ public class database {
     
     
     
-       public int create_User(String Name ,String Email , String Password ) {
+       public String create_User(String Name ,String Email , String Password ) {
            
-        int UID=0;
+        String  user_email="";
 
         try {
 
@@ -68,7 +68,7 @@ public class database {
             
             while( rs.next()) {
             
-               UID =rs.getInt("UserId");
+               user_email =rs.getString("Email");
                break;
            
             }
@@ -85,7 +85,7 @@ public class database {
 
         }
         
-          return UID;
+          return user_email;
     }
        
        
@@ -247,8 +247,8 @@ public class database {
     
     
     
- public int get_user_by_email(String email, String password) {
-    int UID = 0;
+ public String get_user_by_email(String email, String password) {
+    String user_email = "";
 
     try {
         String sql = "SELECT * FROM user WHERE Email=? AND Password=?";
@@ -259,7 +259,7 @@ public class database {
         
         // Check if there's any result
         if (user_data.next()) {
-            UID = user_data.getInt("UserId");
+            user_email = user_data.getString("Email");
            
         }
         
@@ -271,7 +271,7 @@ public class database {
         e.printStackTrace();
     }
     
-    return UID;
+    return user_email;
 }
  
   public int order_place(int UserId,  String address , String mobile , String Email, int PID, int Quantity ,String date ) {
@@ -321,6 +321,49 @@ public class database {
   
   
   }
+  
+  
+  
+  public int get_user_id(String Email, String Password) {
+  
+  int user_id = 0; 
+  try {
+        String sql = "SELECT * FROM user WHERE Email=? AND Password=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, Email);
+        pstmt.setString(2, Password);
+        ResultSet user_data = pstmt.executeQuery();
+        
+        // Check if there's any result
+        if (user_data.next()) {
+            user_id = user_data.getInt("UserId");
+           
+        }
+        
+        // Close ResultSet and PreparedStatement
+        user_data.close();
+        pstmt.close();
+    } catch (SQLException e) {
+        // Properly handle exceptions
+        e.printStackTrace();
+    }
+  
+   
+  
+  
+  
+  
+  
+  
+  return user_id;
+  
+  
+  }
+  
+  
+  
+  
+  
  
       
        

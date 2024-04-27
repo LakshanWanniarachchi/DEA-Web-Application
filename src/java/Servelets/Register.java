@@ -91,14 +91,18 @@ public class Register extends HttpServlet {
          
          database db = new database();
          
-         int UID = db.create_User(uname, Email, password);
+         String user_email = db.create_User(uname, Email, password);
+        
          
-         
-             if ( UID > 0 ){
+             if ( user_email == Email  ){
              
               HttpSession session = request.getSession();
               
-              session.setAttribute("User_id", UID);
+              
+              int user_id = db.get_user_id(Email, password);
+              
+              session.setAttribute("user_email", user_email);
+              session.setAttribute("user_id", user_id);
               response.sendRedirect("index.jsp");
               response.setStatus(HttpServletResponse.SC_OK); 
              

@@ -82,15 +82,16 @@ public class login extends HttpServlet {
         
         database db = new database();
             
-        int UID = db.get_user_by_email(email, Password);
+        String user_email = db.get_user_by_email(email, Password);
         
         
         
-        if ( UID >0 ) {
+        if ( user_email == email ) {
         
-        
+        int user_id = db.get_user_id(email, Password);
         HttpSession session = request.getSession();
-        session.setAttribute("User_id", UID);
+        session.setAttribute("user_email", user_email);
+        session.setAttribute("user_id", user_id);
         response.sendRedirect("index.jsp");
         
         

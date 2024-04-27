@@ -9,7 +9,7 @@
    
    
 
-  if (User!=null) {
+  if (user_email != null) {
 
 
 %>
