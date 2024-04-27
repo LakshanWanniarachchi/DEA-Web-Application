@@ -5,20 +5,25 @@
  */
 package Servelets;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author laksh
  */
-public class login extends HttpServlet {
+
+@MultipartConfig
+public class addProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +42,10 @@ public class login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet login</title>");            
+            out.println("<title>Servlet addProduct</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet addProduct at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +63,7 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
@@ -73,57 +78,48 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try(PrintWriter out = response.getWriter()){
-            
+   
+         try  {
         
-        String email = request.getParameter("email");
-        String Password = request.getParameter("password");
-       
+        System.out.println("In do post method of Add Image servlet.");
+        Part file = request.getPart("imageFile");
         
-        database db = new database();
-            
-        String user_email = db.get_user_by_email(email, Password);
+        String imageFileName = file.getSubmittedFileName();
+        System.out.println("Selected Image File Name : " + imageFileName);
         
+
         
+        String uploadPath = "C:\\Users\\laksh\\OneDrive\\Documents\\NetBeansProjects\\DEA\\DEA-Web-Application\\DEA-Web-Application\\web\\Uploads\\" + imageFileName;
+        System.out.println("Upload Path : " + uploadPath);
         
-        if (email.equals(user_email)  ) {
-        
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("user_name", user_email);
-        response.sendRedirect("index.jsp");
-        
-        
-        } else {
-            
-            
-        
-        request.setAttribute("error", "Email or Password Incorrect!");
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-        dispatcher.forward(request, response);
-        response.sendRedirect("login.jsp");
-        
+     
+    
+             
+             FileOutputStream fos = new FileOutputStream(uploadPath);
+             InputStream is = file.getInputStream();
+            byte[] buffer = new byte[4096]; // Adjust buffer size as needed
+            int bytesRead;
+            while ((bytesRead = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            response.getWriter().println("Error occurred during file upload: " + e.getMessage());
         }
         
-        } catch(Exception e){
-        
-        
-        System.out.println(e.getMessage());
-        
-        
-        
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-      
+  
     }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
     /**
      * Returns a short description of the servlet.
@@ -135,4 +131,19 @@ public class login extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private String generateUniqueFileName(String originalFileName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+    
+    
+    
+    
+
 }
+
+
+
+
