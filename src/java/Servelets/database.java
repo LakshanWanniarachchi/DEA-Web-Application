@@ -1,8 +1,10 @@
 
 package Servelets;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.*;
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 
 
@@ -271,6 +273,55 @@ public class database {
     
     return UID;
 }
+ 
+  public int order_place(int UserId,  String address , String mobile , String Email, int PID, int Quantity ,String date ) {
+      
+      int rowsAffected = 0;
+      
+      try {
+          
+          
+           String sql = "INSERT INTO order (UserId , PID , Billing_Address , Quantity , Mobile , Date ) VALUES (?, ?, ?, ?, ?,?)";
+           PreparedStatement pstmt = conn.prepareStatement(sql);
+           
+           
+           pstmt.setInt(1, UserId);
+           pstmt.setInt(2, PID);
+           pstmt.setString(3, address);
+           pstmt.setInt(4, Quantity);
+           pstmt.setString(5, mobile);
+           pstmt.setString(6, date);
+           
+           
+           
+       rowsAffected = pstmt.executeUpdate();
+      
+      
+      
+      
+      } catch (Exception e) {
+      
+      
+      
+      System.out.println(e);
+      
+      
+      
+      }
+      
+      
+      
+  
+  
+  
+  
+  return rowsAffected;
+  
+  
+  
+  
+  }
+ 
       
        
 }
