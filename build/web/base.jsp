@@ -16,7 +16,7 @@
    
     List<CartData> bla = (List<CartData>)  session.getAttribute("cart-list");
 
-    String User = (String) session.getAttribute("user_name");
+    String User = (String) session.getAttribute("User_id");
     
    int Product_count = 0;
 
@@ -92,7 +92,7 @@
                     <div class="col col-lg-auto align-self-center pl-0">
                         <div class="header-actions">
                             
-                            <% if(User==null) {%>
+                            <% if(User == null) {%>
                             <a href="login.jsp" class="header-action-btn login-btn" data-bs-toggle="modal"
                                 data-bs-target="#loginActive">Sign In</a> <% } %>
                             <!-- Single Wedge Start -->

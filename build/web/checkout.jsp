@@ -1,15 +1,18 @@
-<%
-
-   String uname = (String) session.getAttribute("user_name");
-   
-
-  if (uname!=null) {
 
 
-%>
 
 
 <%@include file="base.jsp" %>
+
+<%
+
+   
+   
+
+  if (User!=null) {
+
+
+%>
 
 <% int Total=0 ;%>
     <!-- breadcrumb-area start -->
@@ -312,7 +315,7 @@
                             </div>
                         </div>
                         <div class="Place-order mt-25">
-                            <a class="btn-hover" href="#">Place Order</a>
+                            <a class="btn-hover" href="PlaceOrder">Place Order</a>
                         </div>
                     </div>
                 </div>
