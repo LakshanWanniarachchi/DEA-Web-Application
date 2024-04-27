@@ -51,7 +51,7 @@ public class database {
 
       
 
-            Statement stmt = conn.createStatement();
+           
 
             String sql = "INSERT INTO user (UserName, Email, Password) VALUES (?, ?, ?)";
             
@@ -123,9 +123,9 @@ public class database {
      
      
      
-            public void add_Product(String P_Name ,int P_Quantity ,String P_description ,int P_Price , int A_ID) {
+            public int add_Product(String P_Name ,int P_Quantity ,String P_description ,int P_Price , int A_ID , String image) {
            
-        
+        int rowsAffected =0 ;
 
         try {
 
@@ -133,7 +133,7 @@ public class database {
 
             Statement stmt = conn.createStatement();
 
-            String sql = "INSERT INTO product (P_Name, P_Quantity, P_description , P_Price , A_ID) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO product (P_Name, P_Quantity, P_description , P_Price, image , A_ID ) VALUES (?, ?, ?, ?, ?,?)";
             
             PreparedStatement pstmt = conn.prepareStatement(sql);
             
@@ -141,11 +141,12 @@ public class database {
             pstmt.setInt(2, P_Quantity);
             pstmt.setString(3, P_description);
             pstmt.setInt(4, P_Price);
-            pstmt.setInt(5, A_ID);
+            pstmt.setString(5, image);
+            pstmt.setInt(6, A_ID);
             
             
             
-            int rowsAffected = pstmt.executeUpdate();
+             rowsAffected = pstmt.executeUpdate();
 
             System.out.println("Rows affected: " + rowsAffected);
 
@@ -156,6 +157,7 @@ public class database {
             e.printStackTrace();
 
         }
+        return rowsAffected;
     }
             
         
@@ -242,8 +244,8 @@ public class database {
     
     
     
- public String get_user_by_email(String email, String password) {
-    String d_email = "";
+ public int get_user_by_email(String email, String password) {
+    int UID = 0;
 
     try {
         String sql = "SELECT * FROM user WHERE Email=? AND Password=?";
@@ -254,7 +256,7 @@ public class database {
         
         // Check if there's any result
         if (user_data.next()) {
-            d_email = user_data.getString("Email");
+            UID = user_data.getInt("UserId");
            
         }
         
@@ -266,7 +268,7 @@ public class database {
         e.printStackTrace();
     }
     
-    return d_email;
+    return UID;
 }
       
        
