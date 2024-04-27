@@ -15,6 +15,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -80,6 +81,15 @@ public class addProduct extends HttpServlet {
         
    
          try  {
+             
+        HttpSession session = request.getSession();    
+        int UID =  (int)session.getAttribute("User_id") ;
+        
+        String P_Name = request.getParameter("P_Name");
+        int P_Quantity =  Integer.parseInt(request.getParameter("P_Quantity"));
+        String P_description =  request.getParameter("P_description");
+        int P_Price = Integer.parseInt(request.getParameter("P_Price"));
+        
         
         System.out.println("In do post method of Add Image servlet.");
         Part file = request.getPart("imageFile");
@@ -95,13 +105,27 @@ public class addProduct extends HttpServlet {
      
     
              
-             FileOutputStream fos = new FileOutputStream(uploadPath);
-             InputStream is = file.getInputStream();
+            FileOutputStream fos = new FileOutputStream(uploadPath);
+            InputStream is = file.getInputStream();
             byte[] buffer = new byte[4096]; // Adjust buffer size as needed
             int bytesRead;
             while ((bytesRead = is.read(buffer)) != -1) {
                 fos.write(buffer, 0, bytesRead);
             }
+            
+            File uploadedFile = new File(uploadPath);
+            if (uploadedFile.exists()) {
+            // Image stored successfully
+            System.out.println("Image stored successfully at: " + uploadPath);
+            } else {
+            // Image storage failed
+            System.out.println("Failed to store image.");
+            
+            
+           
+            
+           
+}
         } catch (IOException e) {
             e.printStackTrace();
             response.getWriter().println("Error occurred during file upload: " + e.getMessage());

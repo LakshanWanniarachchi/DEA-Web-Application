@@ -16,12 +16,22 @@ public class ProductData {
     private int P_Quantity;
     private String P_description;
     private int P_Price;
+    private String p_image;
 
-    public ProductData(int PID, String P_Name, int P_Quantity, String P_description) {
+    public ProductData(int PID, String P_Name, int P_Quantity, String P_description , String p_image) {
         this.PID = PID;
         this.P_Name = P_Name;
         this.P_Quantity = P_Quantity;
         this.P_description = P_description;
+        this.p_image = p_image;
+    }
+
+    public String getP_image() {
+        return p_image;
+    }
+
+    public void setP_image(String p_image) {
+        this.p_image = p_image;
     }
 
     public ProductData() {
