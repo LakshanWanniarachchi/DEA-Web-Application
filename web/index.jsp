@@ -229,8 +229,8 @@
                                     <div class="product">
                                         <div class="thumb">
                                             <a href="single-product.html" class="image">
-                                                <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                                <img class="hover-image" src="assets/images/product-image/2.jpg"
+                                                <img src="<%= product.getP_image() %>" alt="Product" />
+                                                <img class="hover-image" src="<%= product.getP_image() %>"
                                                     alt="Product" />
                                             </a>
                                             <span class="badges">
@@ -279,6 +279,8 @@
             </div>
         </div>
     </div>
+                            
+                       
     <!-- Product Area End -->
 
     <!-- Deal Area Start -->

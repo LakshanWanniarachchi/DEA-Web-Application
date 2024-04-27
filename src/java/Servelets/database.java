@@ -189,6 +189,7 @@ public class database {
             row.setP_Quantity(p_data.getInt("P_Quantity"));
             row.setP_description(p_data.getString("P_description"));
             row.setP_Price(p_data.getInt("P_Price"));
+            row.setP_image(p_data.getString("image"));
             
             products.add(row);
             }

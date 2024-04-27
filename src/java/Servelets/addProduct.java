@@ -83,7 +83,7 @@ public class addProduct extends HttpServlet {
          try  {
              
         HttpSession session = request.getSession();    
-        int UID =  (int)session.getAttribute("User_id") ;
+        int UID =  1;
         
         String P_Name = request.getParameter("P_Name");
         int P_Quantity =  Integer.parseInt(request.getParameter("P_Quantity"));
@@ -99,13 +99,13 @@ public class addProduct extends HttpServlet {
         
 
         
-        String uploadPath = "C:\\Users\\laksh\\OneDrive\\Documents\\NetBeansProjects\\DEA\\DEA-Web-Application\\DEA-Web-Application\\web\\Uploads\\" + imageFileName;
+        String uploadPath = "Uploads/" + imageFileName;
         System.out.println("Upload Path : " + uploadPath);
         
-     
+        String path = "C:\\Users\\laksh\\OneDrive\\Documents\\NetBeansProjects\\DEA\\DEA-Web-Application\\DEA-Web-Application\\web\\Uploads\\"+imageFileName;
     
              
-            FileOutputStream fos = new FileOutputStream(uploadPath);
+            FileOutputStream fos = new FileOutputStream(path);
             InputStream is = file.getInputStream();
             byte[] buffer = new byte[4096]; // Adjust buffer size as needed
             int bytesRead;
@@ -120,12 +120,20 @@ public class addProduct extends HttpServlet {
             } else {
             // Image storage failed
             System.out.println("Failed to store image.");
+            }
             
+            database db = new database();
+            int rowAffected = db.add_Product(P_Name, P_Quantity, P_description, P_Price, UID, uploadPath);
             
+            if (rowAffected==1) {
+            
+            System.out.println(rowAffected);
+            
+            }
            
             
            
-}
+
         } catch (IOException e) {
             e.printStackTrace();
             response.getWriter().println("Error occurred during file upload: " + e.getMessage());
