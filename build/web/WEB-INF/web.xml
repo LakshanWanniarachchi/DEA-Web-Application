@@ -44,6 +44,10 @@
         <servlet-name>placeorder</servlet-name>
         <servlet-class>Servelets.PlaceOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>testing</servlet-name>
+        <servlet-class>Servelets.testing</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>placeorder</servlet-name>
         <url-pattern>/place-order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testing</servlet-name>
+        <url-pattern>/testing</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

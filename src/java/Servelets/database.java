@@ -272,7 +272,7 @@ public class database {
     return user_email;
 }
  
- public int order_place(int UserId, String address, String mobile, String Email, int PID, int Quantity) {
+ public int order_place(int UserId, String address, String mobile, String Email, int PID, int Quantity , double price) {
     
 
    int rowsAffected = 0;
@@ -281,7 +281,7 @@ public class database {
         
    
         
-    String sql = "INSERT INTO `order` (UserId, PID, Billing_Address, Quantity, Mobile, Email) VALUES (?, ?, ?, ?, ?,?)";
+    String sql = "INSERT INTO `order` (UserId, PID, Billing_Address, Quantity, Mobile, Email, price) VALUES (?, ?, ?, ?, ?,?,?)";
     PreparedStatement pstmt = conn.prepareStatement(sql);
         
 
@@ -291,6 +291,7 @@ public class database {
         pstmt.setInt(4, Quantity);
         pstmt.setString(5, mobile);
         pstmt.setString(6, Email);
+        pstmt.setDouble(7, price);
        
 
         rowsAffected = pstmt.executeUpdate();
@@ -342,11 +343,42 @@ public class database {
   }
   
   
+ public List<orders>  getOrdersByUserId(int userId) {
+    List<orders> orderList = new ArrayList<>();
+    
+    try {
+        String sql = "SELECT * FROM `order` WHERE UserId = ?;";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, userId);
+        ResultSet orders_data = pstmt.executeQuery();
+
+        while (orders_data.next()) {
+          orders order = new orders();
+          order.setOid(orders_data.getInt("UserId"));
+          order.setPID(orders_data.getInt("PID"));
+          order.setBilling_Address(orders_data.getString("Billing_Address"));
+          order.setQuantity(orders_data.getInt("Quantity"));
+          order.setMobile(orders_data.getString("Mobile"));
+          order.setEmail(orders_data.getString("Email"));
+          order.setPrice(orders_data.getDouble("price"));
+          
+          orderList.add(order);
+            
+        }
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+    }
+    
+    
+    return orderList;
+}
+
   
   
+
   
- 
-      
+     
        
 }
     

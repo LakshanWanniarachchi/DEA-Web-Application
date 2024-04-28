@@ -113,7 +113,7 @@ public class PlaceOrder extends HttpServlet {
      
        
             
-        int rewAffected = db.order_place(user_id, address, mobile, email, product.getPID(), product.getQuentity());
+        int rewAffected = db.order_place(user_id, address, mobile, email, product.getPID(), product.getQuentity(),product.getP_Price() );
         
         out.println(user_id +","+ address +","+ mobile +","+ email +","+ product.getPID() +","+ product.getQuentity());
         
