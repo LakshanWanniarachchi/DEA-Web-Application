@@ -288,7 +288,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="deal-inner deal-bg position-relative pt-100px pb-100px"
-                        data-bg-image="assets/images/deal-img/abcd.jpg">
+                        data-bg-image="assets/images/deal-img/146.png">
                         <div class="deal-wrapper">
                             <span class="category">#FASHION SHOP</span>
                             <h3 class="title">Deal Of The Day</h3>
@@ -338,7 +338,7 @@
                             </div>
                             <div class="testi-author">
                                 <div class="author-img">
-                                    <img src="assets/images/testimonial-image/1.png" alt="">
+                                    <img src="assets/images/testimonial-image/4.jpg" alt="">
                                 </div>
                                 <div class="author-name">
                                     <h4 class="name">Daisy Morgan</h4>
@@ -364,7 +364,7 @@
                             </div>
                             <div class="testi-author">
                                 <div class="author-img">
-                                    <img src="assets/images/testimonial-image/2.png" alt="">
+                                    <img src="assets/images/testimonial-image/5.jpg" alt="">
                                 </div>
                                 <div class="author-name">
                                     <h4 class="name">Leah Chatman</h4>
@@ -390,7 +390,7 @@
                             </div>
                             <div class="testi-author">
                                 <div class="author-img">
-                                    <img src="assets/images/testimonial-image/3.png" alt="">
+                                    <img src="assets/images/testimonial-image/6.jpg" alt="">
                                 </div>
                                 <div class="author-name">
                                     <h4 class="name">Reyna Chung</h4>
