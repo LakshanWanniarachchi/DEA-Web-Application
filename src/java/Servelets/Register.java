@@ -72,61 +72,40 @@ public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-         response.setContentType("text/html;charset=UTF-8");
-         
-         PrintWriter out = response.getWriter();
-         
-         
-         try {
-         
-           String method  = request.getParameter("register");
-             
-         
-         if ("register".equals(method)) {
-         
-         String uname = request.getParameter("user-name");
-         String password = request.getParameter("user-password");
-         String Email = request.getParameter("user-email");
-         
-         database db = new database();
-         
-         String user_email = db.create_User(uname, Email, password);
-        
-         
-             if ( user_email == Email  ){
-             
-              HttpSession session = request.getSession();
-              
-              
-              int user_id = db.get_user_id(Email, password);
-              
-              session.setAttribute("user_email", user_email);
-              session.setAttribute("user_id", user_id);
-              response.sendRedirect("index.jsp");
-              response.setStatus(HttpServletResponse.SC_OK); 
-             
-             
-             }else {
-             
-             response.setStatus(HttpServletResponse.SC_FORBIDDEN); 
+       response.setContentType("text/html;charset=UTF-8");
+PrintWriter out = response.getWriter();
 
-             
-             }
-         
-         }
-         
-         
-         
-         
-         
-         
-         } catch (Exception e) {
-         
-         
-         
-         
-         }
+try {
+    String uname = request.getParameter("user-name");
+    String password = request.getParameter("user-password");
+    String Email = request.getParameter("user-email");
+    
+    database db = new database();
+    
+    int rowAffected = db.create_User(uname, Email, password);
+    
+    if (rowAffected > 0) {
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("user_email", Email);
+        
+        int user_id = db.get_user_id(Email, password);
+         session.setAttribute("user_id", user_id);
+        response.sendRedirect("index.jsp");
+    } else {
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        out.println("Failed to create user.");
+    }
+} catch (Exception e) {
+    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    out.println("An error occurred: " + e.getMessage());
+    // You may want to log the exception for debugging purposes
+    e.printStackTrace();
+} finally {
+    out.close();
+    // Close any other resources like database connections
+}
+
         
         
         

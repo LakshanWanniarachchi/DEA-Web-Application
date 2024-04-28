@@ -86,9 +86,9 @@ public class login extends HttpServlet {
         
         
         
-        if ( user_email == email ) {
+        if ( email.equals(user_email)   ) {
         
-        int user_id = db.get_user_id(email, Password);
+        int user_id = db.get_user_id(email, Password);     
         HttpSession session = request.getSession();
         session.setAttribute("user_email", user_email);
         session.setAttribute("user_id", user_id);
@@ -97,8 +97,7 @@ public class login extends HttpServlet {
         
         } else {
             
-            
-        
+   
         request.setAttribute("error", "Email or Password Incorrect!");
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");

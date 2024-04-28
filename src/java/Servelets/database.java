@@ -5,7 +5,7 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-
+import java.util.Date;
 
 
 public class database {
@@ -45,9 +45,9 @@ public class database {
     
     
     
-       public String create_User(String Name ,String Email , String Password ) {
+       public int create_User(String Name ,String Email , String Password ) {
            
-        String  user_email="";
+        int  rowAffected = 0;
 
         try {
 
@@ -63,14 +63,11 @@ public class database {
             pstmt.setString(2, Email);
             pstmt.setString(3, Password);
             
-            ResultSet rs = pstmt.executeQuery();
-            
-            
-            while( rs.next()) {
-            
-               user_email =rs.getString("Email");
-               break;
-           
+            rowAffected = pstmt.executeUpdate();
+            if (rowAffected > 0) {
+             System.out.println("A new user was inserted successfully!");
+            } else {
+             System.out.println("Failed to insert the user!");
             }
 
             
@@ -85,7 +82,7 @@ public class database {
 
         }
         
-          return user_email;
+          return rowAffected;
     }
        
        
@@ -248,6 +245,7 @@ public class database {
     
     
  public String get_user_by_email(String email, String password) {
+     
     String user_email = "";
 
     try {
@@ -264,7 +262,7 @@ public class database {
         }
         
         // Close ResultSet and PreparedStatement
-        user_data.close();
+        
         pstmt.close();
     } catch (SQLException e) {
         // Properly handle exceptions
@@ -274,53 +272,36 @@ public class database {
     return user_email;
 }
  
-  public int order_place(int UserId,  String address , String mobile , String Email, int PID, int Quantity ,String date ) {
-      
-      int rowsAffected = 0;
-      
-      try {
-          
-          
-           String sql = "INSERT INTO order (UserId , PID , Billing_Address , Quantity , Mobile , Date ) VALUES (?, ?, ?, ?, ?,?)";
-           PreparedStatement pstmt = conn.prepareStatement(sql);
-           
-           
-           pstmt.setInt(1, UserId);
-           pstmt.setInt(2, PID);
-           pstmt.setString(3, address);
-           pstmt.setInt(4, Quantity);
-           pstmt.setString(5, mobile);
-           pstmt.setString(6, date);
-           
-           
-           
-       rowsAffected = pstmt.executeUpdate();
-      
-      
-      
-      
-      } catch (Exception e) {
-      
-      
-      
-      System.out.println(e);
-      
-      
-      
-      }
-      
-      
-      
-  
-  
-  
-  
-  return rowsAffected;
-  
-  
-  
-  
-  }
+ public int order_place(int UserId, String address, String mobile, String Email, int PID, int Quantity) {
+    
+
+   int rowsAffected = 0;
+    
+    try {
+        
+   
+        
+    String sql = "INSERT INTO `order` (UserId, PID, Billing_Address, Quantity, Mobile, Email) VALUES (?, ?, ?, ?, ?,?)";
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+        
+
+        pstmt.setInt(1, UserId);
+        pstmt.setInt(2, PID);
+        pstmt.setString(3, address);
+        pstmt.setInt(4, Quantity);
+        pstmt.setString(5, mobile);
+        pstmt.setString(6, Email);
+       
+
+        rowsAffected = pstmt.executeUpdate();
+    } catch (SQLException e) {
+        // Handle SQL exceptions more precisely
+        e.printStackTrace(); // Print the exception details for debugging
+    } 
+
+    return rowsAffected;
+}
+
   
   
   

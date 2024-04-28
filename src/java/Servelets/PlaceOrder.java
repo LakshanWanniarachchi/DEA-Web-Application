@@ -7,10 +7,15 @@ package Servelets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -70,8 +75,14 @@ public class PlaceOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
+        HttpSession session = request.getSession();
         
+        List<CartData> products = (List<CartData>) session.getAttribute("cart-list");
+        PrintWriter out = response.getWriter();
+        
+        try {
         
         
         String name = request.getParameter("name");
@@ -91,8 +102,41 @@ public class PlaceOrder extends HttpServlet {
         
         
         
+        int user_id = (int) session.getAttribute("user_id");
         
         
+        
+        database db = new database();
+        for (CartData product : products) {
+            
+            
+     
+       
+            
+        int rewAffected = db.order_place(user_id, address, mobile, email, product.getPID(), product.getQuentity());
+        
+        out.println(user_id +","+ address +","+ mobile +","+ email +","+ product.getPID() +","+ product.getQuentity());
+        
+        out.println(rewAffected);
+        }
+        
+        
+        
+        } catch (Exception e) {
+        
+        
+        System.out.println(e.getMessage());
+        
+        }
+        
+        
+        session.removeAttribute("cart-list");
+        response.sendRedirect("index.jsp");
+        
+        
+        
+        
+
     }
 
     /**
