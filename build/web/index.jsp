@@ -3,6 +3,7 @@
 <%@page import="java.util.*"%>
 <%@page import="Servelets.ProductData"%>
 <%@page import="Servelets.database"%>
+
 <% 
 
  database db = new database();
