@@ -39,7 +39,7 @@
                                 class="col-xl-7 col-lg-7 col-md-7 col-sm-7 d-flex justify-content-center position-relative">
                                 <div class="show-case">
                                     <div class="hero-slide-image">
-                                        <img src="assets/images/slider-image/slider-1.png" alt="" />
+                                        <img src="assets/images/slider-image/JBL4.jpg" alt="" />
                                     </div>
                                     <div class="display-wrapper">
                                         <div class="content-side">
@@ -73,7 +73,7 @@
                                 class="col-xl-7 col-lg-7 col-md-7 col-sm-7 d-flex justify-content-center position-relative">
                                 <div class="show-case">
                                     <div class="hero-slide-image">
-                                        <img src="assets/images/slider-image/slider-2.png" alt="" />
+                                        <img src="assets/images/slider-image/JBL6.jpg" alt="" />
                                     </div>
                                     <div class="display-wrapper">
                                         <div class="content-side">
@@ -109,29 +109,28 @@
             <div class="row">
                 <div class="single-col">
                     <a href="shop-left-sidebar.html" class="single-banner">
-                        <img src="assets/images/banner/1.jpg" alt="">
-                        <div class="item-disc">
+                        <img src="assets/images/banner/11.jpg" alt="">
+<!--                        <div class="item-disc">
                             <span class="item-title">Women</span>
                             <span class="item-amount">16 items</span>
-                        </div>
+                        </div>-->
                     </a>
                 </div>
                 <div class="single-col center-col">
                     <div class="single-banner">
-                        <img src="assets/images/banner/2.jpg" alt="">
-                        <div class="item-disc">
-                            <h2 class="title">#bestsellers</h2>
+                        <img src="assets/images/banner/10.jpg" alt="">
+<!--                        <div class="item-disc">                            
                             <a href="shop-left-sidebar.html" class="shop-link">Shop Now</a>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="single-col">
                     <a href="shop-left-sidebar.html" class="single-banner">
-                        <img src="assets/images/banner/3.jpg" alt="">
-                        <div class="item-disc">
+                        <img src="assets/images/banner/12.jpg" alt="">
+<!--                        <div class="item-disc">
                             <span class="item-title">Nomen</span>
                             <span class="item-amount">16 items</span>
-                        </div>
+                        </div>-->
                     </a>
                 </div>
             </div>
@@ -290,7 +289,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="deal-inner deal-bg position-relative pt-100px pb-100px"
-                        data-bg-image="assets/images/deal-img/deal-bg.jpg">
+                        data-bg-image="assets/images/deal-img/abcd.jpg">
                         <div class="deal-wrapper">
                             <span class="category">#FASHION SHOP</span>
                             <h3 class="title">Deal Of The Day</h3>
