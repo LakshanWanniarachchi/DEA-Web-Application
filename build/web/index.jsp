@@ -228,7 +228,7 @@
                                     <!-- Single Prodect -->
                                     <div class="product">
                                         <div class="thumb">
-                                            <a href="single-product.html" class="image">
+                                            <a href="ProductView?PID=<%= product.getPID() %>" class="image">
                                                 <img src="<%= product.getP_image() %>" alt="Product" />
                                                 <img class="hover-image" src="<%= product.getP_image() %>"
                                                     alt="Product" />

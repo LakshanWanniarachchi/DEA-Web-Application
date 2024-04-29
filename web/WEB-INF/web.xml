@@ -48,6 +48,10 @@
         <servlet-name>testing</servlet-name>
         <servlet-class>Servelets.testing</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductView</servlet-name>
+        <servlet-class>Servelets.ProductView</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>testing</servlet-name>
         <url-pattern>/testing</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductView</servlet-name>
+        <url-pattern>/ProductView</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

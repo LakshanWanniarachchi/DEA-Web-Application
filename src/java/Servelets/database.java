@@ -227,6 +227,7 @@ public class database {
             Product_data.setP_Name(product.getString("P_Name"));
             Product_data.setP_Price(product.getInt("P_Price"));
             Product_data.setP_description(product.getString("P_description"));
+            Product_data.setP_image(product.getString("image"));
             p_data.add(Product_data);
         }
         

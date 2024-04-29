@@ -7,18 +7,18 @@ package Servelets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author laksh
  */
-public class login extends HttpServlet {
+public class ProductView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet login</title>");            
+            out.println("<title>Servlet ProductView</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductView at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +58,50 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+        try {
+        
+        int PID =  Integer.parseInt(request.getParameter("PID"));
+        
+        database db = new database();
+        
+        List<CartData> products = db.get_Product_data_by_id(PID);
+        
+        CartData product = products.get(0);
+        
+         request.setAttribute("P_Name", product.getP_Name() );
+         request.setAttribute("P_description", product.getP_description());
+         request.setAttribute("P_Price", product.getP_Price());
+         request.setAttribute("P_image", product.getP_image() );
+         request.setAttribute("PID", product.getPID() );
+         request.setAttribute("Quentity", product.getQuentity());
+        
+                
+                
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Singal-Product.jsp");
+        dispatcher.forward(request, response);
+        response.sendRedirect("login.jsp");
+        
+        
+        
+        } catch(Exception e) {
+        
+        System.out.println(e);
+        
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
@@ -72,58 +115,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        try(PrintWriter out = response.getWriter()){
-            
-        
-        String email = request.getParameter("email");
-        String Password = request.getParameter("password");
-       
-        
-        database db = new database();
-            
-        String user_email = db.get_user_by_email(email, Password);
-        
-        
-        
-        if ( email.equals(user_email)   ) {
-        
-        int user_id = db.get_user_id(email, Password);     
-        HttpSession session = request.getSession();
-        session.setAttribute("user_email", user_email);
-        session.setAttribute("user_id", user_id);
-        response.sendRedirect("index.jsp");
-        
-        
-        } else {
-            
-   
-        request.setAttribute("error", "Email or Password Incorrect!");
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-        dispatcher.forward(request, response);
-        response.sendRedirect("login.jsp");
-        response.setStatus(HttpServletResponse.SC_OK);
-        
-        }
-        
-        } catch(Exception e){
-        
-        
-        System.out.println(e.getMessage());
-        
-        
-        
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-      
+        processRequest(request, response);
     }
 
     /**
