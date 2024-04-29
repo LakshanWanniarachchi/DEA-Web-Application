@@ -130,7 +130,7 @@ public class database {
 
       
 
-            Statement stmt = conn.createStatement();
+            
 
             String sql = "INSERT INTO product (P_Name, P_Quantity, P_description , P_Price, image , A_ID ) VALUES (?, ?, ?, ?, ?,?)";
             
@@ -376,6 +376,52 @@ public class database {
 }
 
   
+ 
+ public int delete_product_by_id(int PID) {
+     
+     int rowsAffected =0;
+ 
+     try{
+         
+         
+         
+          String sql = "DELETE FROM product WHERE PID = ?";
+          
+          PreparedStatement pstmt = conn.prepareStatement(sql);
+          
+          pstmt.setInt(1, PID);
+          
+          
+          rowsAffected = pstmt.executeUpdate();
+          if (rowsAffected > 0) {
+          System.out.println("Item deleted successfully.");
+          } else {
+          System.out.println("Item not found or deletion failed.");
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        } catch(Exception e) {
+ 
+ 
+         System.out.println(e);
+ 
+ 
+ }
+ 
+ 
+    return rowsAffected;
+ 
+ 
+ 
+ 
+ 
+ }
   
 
   

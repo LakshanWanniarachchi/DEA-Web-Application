@@ -52,6 +52,10 @@
         <servlet-name>ProductView</servlet-name>
         <servlet-class>Servelets.ProductView</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>testing2</servlet-name>
+        <servlet-class>Servelets.testing2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ProductView</servlet-name>
         <url-pattern>/ProductView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testing2</servlet-name>
+        <url-pattern>/testing2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
