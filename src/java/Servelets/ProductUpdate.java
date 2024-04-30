@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +21,7 @@ import javax.servlet.http.Part;
  *
  * @author laksh
  */
-
-@MultipartConfig
-public class addProduct extends HttpServlet {
+public class ProductUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +40,10 @@ public class addProduct extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet addProduct</title>");            
+            out.println("<title>Servlet ProductUpdate</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet addProduct at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductUpdate at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,7 +61,7 @@ public class addProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**
@@ -79,17 +76,20 @@ public class addProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-   
+        
+        
+        
+        
          try  {
              
         HttpSession session = request.getSession();    
-        int UID = 1;
+        int A_ID = 1;
         
         String P_Name = request.getParameter("P_Name");
         int P_Quantity =  Integer.parseInt(request.getParameter("P_Quantity"));
         String P_description =  request.getParameter("P_description");
         int P_Price = Integer.parseInt(request.getParameter("P_Price"));
-        
+        int PID = Integer.parseInt(request.getParameter("PID"));
         
         System.out.println("In do post method of Add Image servlet.");
         Part file = request.getPart("imageFile");
@@ -123,13 +123,13 @@ public class addProduct extends HttpServlet {
             }
             
             database db = new database();
-            int rowAffected = db.add_Product(P_Name, P_Quantity, P_description, P_Price, UID, uploadPath);
+            int rowAffected = db.product_details_update(P_Name, P_Quantity, P_description, P_Price, A_ID, path, PID);
             
-            if (rowAffected==1) {
+            if (rowAffected>0) {
             
             System.out.println(rowAffected);
             
-            }
+            } 
            
             
            
@@ -139,19 +139,11 @@ public class addProduct extends HttpServlet {
             response.getWriter().println("Error occurred during file upload: " + e.getMessage());
         }
         
-  
+        
+        
+        
+        
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
     /**
      * Returns a short description of the servlet.
@@ -163,19 +155,4 @@ public class addProduct extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private String generateUniqueFileName(String originalFileName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
-    
-    
-    
-    
-
 }
-
-
-
-

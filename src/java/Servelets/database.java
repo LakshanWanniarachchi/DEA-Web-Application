@@ -422,10 +422,53 @@ public class database {
  
  
  }
-  
-
-  
+ 
+ 
+ public int product_details_update(String P_Name ,int P_Quantity ,String P_description ,int P_Price , int A_ID , String image ,int PID){
+ 
      
+     int rowAffected = 0 ;
+   try {
+       
+       
+
+       
+          String sql = "UPDATE product SET P_Name = ?, P_Quantity = ? , P_description = ? , P_Price = ? , image =?, A_ID = ?  WHERE PID = ?;";
+
+
+          
+          PreparedStatement pstmt = conn.prepareStatement(sql);
+          
+            pstmt.setString(1, P_Name);
+            pstmt.setInt(2, P_Quantity);
+            pstmt.setString(3, P_description);
+            pstmt.setInt(4, P_Price);
+            pstmt.setString(5, image);
+            pstmt.setInt(6, A_ID);
+            pstmt.setInt(7, PID);
+       
+          rowAffected = pstmt.executeUpdate();
+       
+        if (rowAffected > 0) {
+          System.out.println("Item Updated successfully.");
+
+          } else {
+          System.out.println("Item not found or Update failed.");
+        }
+   } catch(Exception e) {
+   
+   System.out.println(e);
+   
+   }
+ 
+ 
+  return rowAffected;
+ 
+ 
+ 
+ }
+  
+    
        
 }
     
