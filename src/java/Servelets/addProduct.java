@@ -83,7 +83,7 @@ public class addProduct extends HttpServlet {
          try  {
              
         HttpSession session = request.getSession();    
-        int UID = 1;
+        int A_ID = 1;
         
         String P_Name = request.getParameter("P_Name");
         int P_Quantity =  Integer.parseInt(request.getParameter("P_Quantity"));
@@ -123,7 +123,7 @@ public class addProduct extends HttpServlet {
             }
             
             database db = new database();
-            int rowAffected = db.add_Product(P_Name, P_Quantity, P_description, P_Price, UID, uploadPath);
+            int rowAffected = db.add_Product(P_Name, P_Quantity, P_description, P_Price, A_ID, uploadPath);
             
             if (rowAffected==1) {
             
