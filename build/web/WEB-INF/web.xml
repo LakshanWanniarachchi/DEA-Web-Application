@@ -60,6 +60,14 @@
         <servlet-name>ProductUpdate</servlet-name>
         <servlet-class>Servelets.ProductUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>productRemove</servlet-name>
+        <servlet-class>Servelets.productRemove</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getProductId</servlet-name>
+        <servlet-class>Servelets.getProductId</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>ProductUpdate</servlet-name>
         <url-pattern>/ProductUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productRemove</servlet-name>
+        <url-pattern>/productRemove</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getProductId</servlet-name>
+        <url-pattern>/getProductId</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
