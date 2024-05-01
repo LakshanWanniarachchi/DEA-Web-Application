@@ -84,7 +84,7 @@
                                     
                                 </li>
                              
-                                <li><a href="about.html">About us</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
                                 
                             </ul>
                         </div>
