@@ -111,7 +111,7 @@ public class ProductUpdate extends HttpServlet {
     String uploadPath = "Uploads/" + imageFileName;
     System.out.println("Upload Path : " + uploadPath);
     
-    String path = "C:\\Users\\laksh\\OneDrive\\Documents\\NetBeansProjects\\DEA\\DEA-Web-Application\\web\\Uploads\\"+imageFileName;
+    String path = "C:\\Users\\ASUS\\Documents\\newDEA\\DEA-Web-Application\\DEA-Web-Application\\web\\Uploads\\"+imageFileName;
 
     FileOutputStream fos = new FileOutputStream(path);
     InputStream is = file.getInputStream();
