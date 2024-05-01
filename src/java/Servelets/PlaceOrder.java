@@ -82,6 +82,8 @@ public class PlaceOrder extends HttpServlet {
         List<CartData> products = (List<CartData>) session.getAttribute("cart-list");
         PrintWriter out = response.getWriter();
         
+        
+        int rewAffected =0 ;
         try {
         
         
@@ -113,11 +115,20 @@ public class PlaceOrder extends HttpServlet {
      
        
             
-        int rewAffected = db.order_place(user_id, address, mobile, email, product.getPID(), product.getQuentity(),product.getP_Price() );
+     rewAffected = db.order_place(user_id, address, mobile, email, product.getPID(), product.getQuentity(),product.getP_Price() );
         
         out.println(user_id +","+ address +","+ mobile +","+ email +","+ product.getPID() +","+ product.getQuentity());
         
         out.println(rewAffected);
+        }
+        
+        
+          if (rewAffected >0 ) {
+        
+        session.removeAttribute("cart-list");
+        response.sendRedirect("thankyou.jsp");
+        
+        
         }
         
         
@@ -129,10 +140,7 @@ public class PlaceOrder extends HttpServlet {
         
         }
         
-        
-        session.removeAttribute("cart-list");
-        response.sendRedirect("index.jsp");
-        
+       
         
         
         

@@ -86,7 +86,7 @@ public class cartproductremove extends HttpServlet {
              
              session.setAttribute("cart-list", cartList);
              
-             response.sendRedirect("cart.jsp");
+             response.sendRedirect("CartPage.jsp");
          
          
          
