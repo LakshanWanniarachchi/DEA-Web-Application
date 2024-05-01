@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -132,9 +133,31 @@ public class ProductUpdate extends HttpServlet {
     database db = new database();
     int rowAffected = db.product_details_update(P_Name, P_Quantity, P_description, P_Price, A_ID, uploadPath, PID);
     
-    if (rowAffected > 0) {
-        System.out.println(rowAffected);
-    } 
+   if (rowAffected > 0) {
+       
+         request.setAttribute("success", "Order Update Success !");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product-edit.jsp");
+        dispatcher.forward(request, response);
+        response.sendRedirect("product-edit.jsp");
+      
+        
+        
+        
+        
+    } else {
+    
+    
+    request.setAttribute("error", "Order Update Not Success !");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product-edit.jsp");
+        dispatcher.forward(request, response);
+      response.sendRedirect("product-edit.jsp");
+       
+    
+    
+    }
+   
 } catch (IOException e) {
     e.printStackTrace();
     response.getWriter().println("Error occurred during file upload: " + e.getMessage());

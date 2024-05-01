@@ -5,26 +5,30 @@
         <group>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/login.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/Singal-Product.jsp</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/testing2.java</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/orders.java</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/CartData.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/product-update.jsp</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/ProductUpdate.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/login.jsp</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/CartPage.jsp</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/index.jsp</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/cartproductremove.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/addProduct.java</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/ProductView.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/Admin.jsp</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/my-account.jsp</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/cartqytupdate.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/getProductId.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/signin.jsp</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/Register.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/orders.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/ProductView.jsp</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/productRemove.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/CartData.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/cartproductremove.java</file>
+            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/ProductView.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/cart.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/database.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/checkout.jsp</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/my-account.jsp</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/cartqytupdate.java</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/base.jsp</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/PlaceOrder.java</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/web/signin.jsp</file>
             <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/ProductData.java</file>
-            <file>file:/C:/Users/laksh/OneDrive/Documents/NetBeansProjects/DEA/DEA-Web-Application/src/java/Servelets/Register.java</file>
         </group>
     </open-files>
 </project-private>

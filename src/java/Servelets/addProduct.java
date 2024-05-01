@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -125,9 +126,25 @@ public class addProduct extends HttpServlet {
             database db = new database();
             int rowAffected = db.add_Product(P_Name, P_Quantity, P_description, P_Price, A_ID, uploadPath);
             
-            if (rowAffected==1) {
+          if (rowAffected > 0) {
             
-            System.out.println(rowAffected);
+       request.setAttribute("success", "Order Add Success !");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Admin.jsp");
+        dispatcher.forward(request, response);
+ 
+      
+            
+            } else {
+            
+            
+       request.setAttribute("error", "Order add Not Success !");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Admin.jsp");
+        dispatcher.forward(request, response);
+      
+            
+            
             
             }
            
